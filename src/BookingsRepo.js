@@ -1,4 +1,4 @@
-class Bookings {
+class BookingsRepo {
   constructor() {
 
   }
@@ -9,3 +9,5 @@ class Bookings {
     
   }
 }
+
+export default BookingsRepo;

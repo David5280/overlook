@@ -14,12 +14,14 @@ class RoomRepo {
     return this.roomData.filter(room => room.roomType === type);
   }
   addNewBooking() {
-    let booking = new booking(555, '22/08/2019', 143);
+    let booking = new Booking(555, '22/08/2019', 143);
     this.bookingRepoData.push(booking);
   }
-  removeBooking() {
-    let bookingIndex = this.bookingRepoData.findIndex(booking => booking.userID === book);
+  removeBooking(reservation) {
+    let bookingIndex = this.bookingRepoData.findIndex(booking => booking.userID === reservation);
     this.bookingRepoData.splice(bookingIndex, 1);
   }
 }
+
+export default RoomRepo;
 

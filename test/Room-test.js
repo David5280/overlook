@@ -22,10 +22,10 @@ describe('Room', function () {
   it('should indicate bed size', function() {
     expect(room.bedSize).to.equal("twin");
   });
-  it('should indicate bed size', function() {
-    expect(room.bedSize).to.equal("twin");
+  it('indicate the number of beds', function() {
+    expect(room.numBeds).to.equal(2);
   });
-  it('should indicate bed size', function() {
-    expect(room.bedSize).to.equal("twin");
+  it('should indicate cost per night', function() {
+    expect(room.costPerNight).to.equal(462.7);
   }); 
 })
