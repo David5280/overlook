@@ -1003,4 +1003,4 @@ const testBookings = {
   ]
 }
 
-export default 'testBookings'
+export default testBookings;

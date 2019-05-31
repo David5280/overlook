@@ -1,9 +1,11 @@
 class Room {
-  constructor(type, bedCount, bedSize, bidet) {
+  constructor(number, type, bidet, bedSize, numBeds, costPerNight) {
+    this.number = number;
     this.type = type;
-    this.bedCount = bedCount;
-    this.bedSize = bedSize;
     this.bidet = bidet;
+    this.bedSize = bedSize;
+    this.numBeds = numBeds;
+    this.costPerNight = costPerNight;
   }
   upgradeRoom() {
 
@@ -16,4 +18,4 @@ class Room {
   }
 }
 
-export default 'Room';
+export default Room;
