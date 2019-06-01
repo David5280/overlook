@@ -41,7 +41,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/rooms/rooms')
   .then(result => roomRepoData = result.rooms)
   .catch(err => console.error(err));
 
-fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServices')
+fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/      roomServices')
   .then(response => response.json())
   .then(result => roomServicesRepoData = result.roomServices)
   .catch(err => console.error(err));
@@ -57,7 +57,9 @@ $( document ).ready(function() {
     const roomRepo = new RoomRepo(roomRepoData);
     const roomServicesRepo = new RoomServicesRepo(roomServicesRepoData);
     const bookingsRepo = new BookingsRepo(bookingsRepoData);
-    // const room = new RoomRepo();
+    console.log(customerRepo);
+    console.log(roomRepo);
+
 
     $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
@@ -70,7 +72,8 @@ $( document ).ready(function() {
     })
 
     $('.tab1-date').text(`Current Date:  ${today}`);
-    $('.tab1-primary-info').text(`Rooms Available Today:  ${bookingsRepo.getNumberOfOccupiedRooms()} Today's Balance:  Percent Full:`)
+
+  $('.tab1-primary-info').append(`<p class ='tab1-primary-info-text'>There are ${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(today).length} rooms available today. <br /> Today's Balance:  ${(roomServiceRepo.getRoomServiceRevenueByDate(today)) + }<br />You are at ${bookingsRepo.getPercentageOfOccupiedRooms(today)}% capacity</p>`);
 
   }
   setTimeout(timer, 500);

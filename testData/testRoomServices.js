@@ -602,3 +602,5 @@ const testRoomServices = {
     }
   ]
 }
+
+export default testRoomServices;

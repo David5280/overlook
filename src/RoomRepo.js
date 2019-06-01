@@ -5,9 +5,6 @@ class RoomRepo {
     this.bookingRepoData = bookingRepoData;
     this.totalCapacity = this.bookingRepoData.length;
   }
-  getNumberOfOccupiedRooms(date) {
-    return this.bookingRepoData.filter(room => room.date === date);
-  }
   getNumberOfFreeRooms(date) {
     return this.totalRooms - this.getNumberOfOccupiedRooms(date)
   }
