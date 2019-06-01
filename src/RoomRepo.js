@@ -1,25 +1,28 @@
+import testBookings from '../testData/testBookings.js' 
+
 class RoomRepo {
-  constructor(bookingRepoData, roomData, totalCapacity) {
+  constructor(bookingRepoData) {
     this.bookingRepoData = bookingRepoData;
-    this.roomData = roomData;
-    this.totalCapacity = totalCapacity;
+    this.totalCapacity = this.bookingRepoData.length;
   }
-  getnumberOfOccupiedRooms(date) {
-    return this.bookingRepoData.filter(room => room.date === date).length;
+  getNumberOfOccupiedRooms(date) {
+    return this.bookingRepoData.filter(room => room.date === date);
   }
   getNumberOfFreeRooms(date) {
-    return this.totalRooms - this.getPercentOfOccupiedRooms(date)
+    return this.totalRooms - this.getNumberOfOccupiedRooms(date)
   }
   getRoomsByType(type) {
     return this.roomData.filter(room => room.roomType === type);
   }
   addNewBooking() {
-    let booking = new booking(555, '22/08/2019', 143);
+    let booking = new Booking(555, '22/08/2019', 143);
     this.bookingRepoData.push(booking);
   }
-  removeBooking() {
-    let bookingIndex = this.bookingRepoData.findIndex(booking => booking.userID === book);
+  removeBooking(reservation) {
+    let bookingIndex = this.bookingRepoData.findIndex(booking => booking.userID === reservation);
     this.bookingRepoData.splice(bookingIndex, 1);
   }
 }
+
+export default RoomRepo;
 

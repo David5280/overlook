@@ -1,6 +1,5 @@
 import chai from 'chai';
 import Customer from '../src/Customer.js';
-// import testUsers from '../testData/testUsers.js'
 const expect = chai.expect;
 
 describe('Customer', function() {
@@ -8,7 +7,6 @@ describe('Customer', function() {
   beforeEach(function () {
     customer = new Customer(4, "Milo Ankunding")
   });
-
   it('should be an instance of customer', function() {
     expect(customer).to.be.an.instanceOf(Customer);
   });

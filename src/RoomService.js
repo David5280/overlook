@@ -1,5 +1,0 @@
-class RoomService {
-  constructor() {
-    
-  }
-}

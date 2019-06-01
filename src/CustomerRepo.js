@@ -1,19 +1,23 @@
 import Customer from './Customer';
 
 class CustomerRepo {
-  constructor() {
-    
+  constructor(customerData) {
+    this.customerData = customerData;
   }
   addCustomer() {
-
+    let customer = new Customer(420, 'David Engel');
+    this.customerData.push(customer);
   }
-  findCustomer() {
-
+  findCustomerByName(name) {
+    return this.customerData.find(customer => customer.name.toUpperCase() === name.toUpperCase());
+  }
+  validateCustomer(name) {
+    let customerNames = this.customerData.map(customer => customer.name.toUpperCase());
+    return customerNames.includes(name.toUpperCase()) ? true : false;
   }
   calculateTotalBill() {
-
-  }
-  validateCustomer() {
-
+ 
   }
 }
+
+export default CustomerRepo;
