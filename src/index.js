@@ -5,9 +5,7 @@ import CustomerRepo from './CustomerRepo';
 import RoomRepo from './RoomRepo';
 import BookingsRepo from './BookingsRepo';
 import RoomServicesRepo from './RoomServicesRepo';
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
+import domUpdates from './domUpdates';
 
 let customerRepoData;
 let roomRepoData;
@@ -25,6 +23,9 @@ if (mm < 10) {
   mm = `0${mm}`;
 }
 today = `${dd}/${mm}/${yyyy}`;
+
+
+
 
 var customerData;
 var roomData;
@@ -51,13 +52,16 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
   .then(result => bookingsRepoData = result.bookings)
   .catch(err => console.error(err));
 
-$( document ).ready(function() {
+
+
+
+  $( document ).ready(function() {
   function timer() {
     const customerRepo = new CustomerRepo(customerRepoData);
-    const roomRepo = new RoomRepo(roomRepoData);
+    const roomRepo = new RoomRepo(roomRepoData, bookingsRepoData);
     const roomServicesRepo = new RoomServicesRepo(roomServicesRepoData);
     const bookingsRepo = new BookingsRepo(bookingsRepoData);
-    // const room = new RoomRepo();
+    let orderData = roomServicesRepo.getOrdersByDate(today);
 
     $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
@@ -67,12 +71,22 @@ $( document ).ready(function() {
   
       $(this).addClass('current');
       $("#" + tab_id).addClass('current');
+    });
+
+    $('#tab2-submit-search').click(function (e) {
+      e.preventDefault();
+      $('.tab2-days-orders').text('');
+      let inputDate = $('#tab2-date-input').val();
+      let orderData = roomServicesRepo.getOrdersByDate(inputDate); 
+      domUpdates.displayOrdersByDate(orderData);
     })
 
-    $('.tab1-date').text(`Current Date:  ${today}`);
-    $('.tab1-primary-info').text(`Rooms Available Today:  ${bookingsRepo.getNumberOfOccupiedRooms()} Today's Balance:  Percent Full:`)
+    domUpdates.displayTodaysDate(today);
+    domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
+    domUpdates.displayOrdersByDate(orderData);
+    domUpdates.displayRoomServiceRevenueByDate(roomServicesRepo, today);
 
   }
-  setTimeout(timer, 500);
+  setTimeout(timer, 700);
 });
 

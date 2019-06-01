@@ -1,7 +1,7 @@
-class Hotel {
-  constructor() {
+// class Hotel {
+//   constructor() {
 
-  }
-}
+//   }
+// }
 
-export default Hotel;
+// export default Hotel;

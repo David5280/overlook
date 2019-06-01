@@ -1,4 +1,4 @@
-const testRooms = {
+const testRoom = {
   rooms: [
     {
       number: 1,
@@ -1603,4 +1603,4 @@ const testRooms = {
   ]
 }
 
-export default testRooms;
+export default testRoom;

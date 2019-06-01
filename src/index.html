@@ -6,7 +6,6 @@
   <body>
     <header>
       <h1>OVERWATCH</h1>
-      <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px"      width="100px"> -->
     </header>
     <main>
         <div class="container">
@@ -21,10 +20,20 @@
               <section class='tab1-primary-info'></section>
             </article>
             <article id="tab-2" class="tab-content">
+              <h3 id='tab2-todays-orders'>Today's Order's</h3>
+              <form>
+                <input type="text" id="tab2-date-input" placeholder="Search: dd/mm/yyyy"/>
+                <input type='submit' id='tab2-submit-search'>
+              </form>
+              <section class='tab2-days-orders'></section>
             </article>
             <article id="tab-3" class="tab-content">
             </article>
             <article id="tab-4" class="tab-content">
+              <div class='tab4-input-container'>
+                <input type='search' id='tab4-customer-search' placeholder='Search Customers by Name'/>
+                <button>Add New Customer</button>
+              </div>
             </article>
           </div><!-- container -->
     </main>
