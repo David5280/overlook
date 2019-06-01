@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Overwatch</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <header>
+      <h1>OVERWATCH</h1>
+      <!-- <img src="/images/turing-logo.png" alt="turing logo" height="100px"      width="100px"> -->
+    </header>
+    <main>
+        <div class="container">
+          <ul class="tabs">
+              <li class="tab-link current" data-tab="tab-1">MAIN</li>
+              <li class="tab-link" data-tab="tab-2">ORDERS</li>
+              <li class="tab-link" data-tab="tab-3">ROOMS</li>
+              <li class="tab-link" data-tab="tab-4">CUSTOMERS</li>
+            </ul>
+            <article id="tab-1" class="tab-content current">
+              <section class='tab1-date'></section>
+              <section class='tab1-primary-info'></section>
+            </article>
+            <article id="tab-2" class="tab-content">
+            </article>
+            <article id="tab-3" class="tab-content">
+            </article>
+            <article id="tab-4" class="tab-content">
+            </article>
+          </div><!-- container -->
+    </main>
 
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    
+
+
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>

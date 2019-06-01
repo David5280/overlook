@@ -1,6 +1,6 @@
 class RoomServicesRepo {
-  constructor() {
-    
+  constructor(serviceData) {
+    this.serviceData = serviceData;
   }
 }
 

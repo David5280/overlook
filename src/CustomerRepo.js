@@ -4,9 +4,6 @@ class CustomerRepo {
   constructor(customerData) {
     this.customerData = customerData;
   }
-  getAllCustomers() {
-    
-  }
   addCustomer() {
     let customer = new Customer(420, 'David Engel');
     this.customerData.push(customer);
@@ -19,7 +16,7 @@ class CustomerRepo {
     return customerNames.includes(name.toUpperCase()) ? true : false;
   }
   calculateTotalBill() {
-
+ 
   }
 }
 

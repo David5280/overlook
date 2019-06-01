@@ -1602,3 +1602,5 @@ const testRooms = {
     }
   ]
 }
+
+export default testRooms;

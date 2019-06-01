@@ -1,14 +1,15 @@
+import testBookings from '../testData/testBookings.js' 
+
 class RoomRepo {
-  constructor(bookingRepoData, roomData, totalCapacity) {
+  constructor(bookingRepoData) {
     this.bookingRepoData = bookingRepoData;
-    this.roomData = roomData;
-    this.totalCapacity = totalCapacity;
+    this.totalCapacity = this.bookingRepoData.length;
   }
-  getnumberOfOccupiedRooms(date) {
-    return this.bookingRepoData.filter(room => room.date === date).length;
+  getNumberOfOccupiedRooms(date) {
+    return this.bookingRepoData.filter(room => room.date === date);
   }
   getNumberOfFreeRooms(date) {
-    return this.totalRooms - this.getPercentOfOccupiedRooms(date)
+    return this.totalRooms - this.getNumberOfOccupiedRooms(date)
   }
   getRoomsByType(type) {
     return this.roomData.filter(room => room.roomType === type);

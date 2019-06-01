@@ -1,6 +1,91 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$backgroundColor: #5CDB95;
+$secondaryColor: #EDF5E1;
+$tertiaryColor:  #379683;
+$accentBlue: #05386B;
+$textColor: #004;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
 
 body {
-  background-color: $primary-background;
+  background-color: $backgroundColor;
+  font-family: 'Trebuchet MS', serif;
+  line-height: 1.6
+}
+
+header {
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  color: $textColor;
+}
+
+main {
+  height: 100%;
+}
+
+.container{
+  width: 95%;
+  height: 95%;
+  margin: 0 auto;
+}
+
+.tab {
+  height: 100%;
+}
+
+.tab1-date {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $accentBlue;
+}
+
+.tab1-primary-info {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid $accentBlue;
+}
+
+ul.tabs{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.tabs li{
+  background: none;
+  color: $textColor;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current{
+  background: #ededed;
+  color: #222;
+}
+
+.tab-content{
+  display: none;
+  background: #ededed;
+  padding: 15px;
+  height: 500px;
+}
+
+.tab-content.current{
+  display: inherit;
 }
