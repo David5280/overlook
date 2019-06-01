@@ -48,18 +48,32 @@ main {
   height: 10%;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid $accentBlue;
+  border-bottom: 2px solid $accentBlue;
 }
 
 .tab1-primary-info {
   width: 100%;
   height: 30%;
   display: flex;
-  border-bottom: 1px solid $accentBlue;
+  border-bottom: 2px solid $accentBlue;
 }
 
 .tab1-primary-info-text {
   font-size: 24px;
+}
+
+#tab2-date-input {
+  width: 20%;
+}
+
+.tab2-days-orders {
+  width: 50%;
+  border-right: 1px solid $accentBlue;
+  overflow: auto;
+}
+
+.tab2-days-orders-text {
+  font-size: 16px;
 }
 
 ul.tabs{
@@ -90,4 +104,17 @@ ul.tabs li.current{
 
 .tab-content.current{
   display: inherit;
+}
+
+.info-bold {
+  font-weight: 800;
+}
+
+.tab4-input-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#tab4-customer-search {
+  width: 25%;
 }
