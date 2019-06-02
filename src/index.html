@@ -15,10 +15,12 @@
               <li class="tab-link" data-tab="tab-3">ROOMS</li>
               <li class="tab-link" data-tab="tab-4">CUSTOMERS</li>
             </ul>
+
             <article id="tab-1" class="tab-content current">
               <section class='tab1-date'></section>
               <section class='tab1-primary-info'></section>
             </article>
+
             <article id="tab-2" class="tab-content">
               <h3 id='tab2-todays-orders'>Today's Order's</h3>
               <form>
@@ -27,10 +29,16 @@
               </form>
               <section class='tab2-days-orders'></section>
             </article>
+
             <article id="tab-3" class="tab-content">
-              <input type='text' id="tab3-search-room-input" placeholder='Search Available Rooms by Date || dd/mm/yyyy'>
+              <form class='tab3-search-dates'></form>
+                <input type='text' id="tab3-search-room-input" placeholder='Search Available Rooms by Date || dd/mm/yyyy'>
+                <button id='tab3-search-btn'>Search</button>
+              </form>
               <section class='tab3-default-displays'></section>
+              <section class='tab3-room-displays'></section>
             </article>
+
             <article id="tab-4" class="tab-content">
               <div class='tab4-input-container'>
                 <input type='search' id='tab4-customer-search' placeholder='Search Customers by Name'/>
@@ -38,6 +46,7 @@
               </div>
               <section class='tab4-customer-output'></section>
             </article>
+
           </div><!-- container -->
     </main>
 
