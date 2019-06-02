@@ -25,16 +25,9 @@ class RoomRepo {
     }, 0)
     return totalRoomRevenue;
   }
-
-  // addNewBooking() {
-  //   let booking = new Booking(555, '22/08/2019', 143);
-  //   this.bookingRepoData.push(booking);
-  // }
-
-  // removeBooking(reservation) {
-  //   let bookingIndex = this.bookingRepoData.findIndex(booking => booking.userID === reservation);
-  //   this.bookingRepoData.splice(bookingIndex, 1);
-  // }
+  getMostPopularBookingDate() {
+    console.log(this.bookingRepoData)
+  }
 }
 
 export default RoomRepo;

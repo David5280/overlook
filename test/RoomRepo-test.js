@@ -16,6 +16,5 @@ describe('RoomRepo', function () {
   it('should get total room revenue by date', function () {
     expect(roomRepo.getTotalRoomRevenueByDate('22/02/2020')).to.equal(853.5999999999999)
   });
-  
 });
 

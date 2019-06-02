@@ -79,12 +79,23 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
       let inputDate = $('#tab2-date-input').val();
       let orderData = roomServicesRepo.getOrdersByDate(inputDate); 
       domUpdates.displayOrdersByDate(orderData);
+    });
+
+    $('#tab4-customer-search').on('input', function () {
+      let search = $('#tab4-customer-search').val();
+      if (search) {
+        customerRepo.searchCustomers(search)
+      } else {
+        domUpdates.displayNoCustomersFound();
+      }
     })
 
     domUpdates.displayTodaysDate(today);
     domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
     domUpdates.displayOrdersByDate(orderData);
     domUpdates.displayRoomServiceRevenueByDate(roomServicesRepo, today);
+    domUpdates.displayMostPopularBookingDate(bookingsRepo);
+  
 
   }
   setTimeout(timer, 700);
