@@ -110,6 +110,18 @@ ul.tabs li.current{
   font-weight: 800;
 }
 
+#tab3-search-room-input {
+  width: 25%;
+  align-self: center;
+}
+
+.tab3-default-displays {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  border-right: 1px solid $accentBlue;
+}
+
 .tab4-input-container {
   display: flex;
   justify-content: space-around;

@@ -11,10 +11,10 @@ export default {
     $('.tab1-primary-info').append(`
     <p class ='tab1-primary-info-text'>There are <span class='info-bold'>
     ${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(date).length}
-    </span> rooms available today. <br /> 
+    </span> rooms available. <br /> 
     Today's Revenue:  <span class='info-bold'>
     $${roomRepo.getTotalRoomRevenueByDate(date).toFixed(2)}</span><br />
-    You are at <span class='info-bold'>${bookingsRepo.getPercentageOfOccupiedRooms(date)}%</span> capacity</p>`);
+    Hotel Capacity: <span class='info-bold'>${bookingsRepo.getPercentageOfOccupiedRooms(date)}%</span></p>`);
   },
 
   displayOrdersByDate(orders) {
@@ -31,5 +31,23 @@ export default {
     $('.tab2-days-orders').append(`<p>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(date)} <br />
     
     </p>`);
+  },
+
+  displayMostPopularBookingDate(bookingsRepo) {
+    $('.tab3-default-displays').append(`<p class='tab3-popular-date'>Most Popular Booking Date:  <span class='info-bold'>${bookingsRepo.getMostPopularBookingDate()}</span> <br />
+    Most Available Booking Date:  <span class='info-bold'>${bookingsRepo.getMostAvailableBookingDate()}</span>
+    </p>`)
+  },
+
+  searchCustomers(users) {
+    users.forEach(user => {
+      $('.tab4-customer-output').append(`<p>${user.name}</p>`)
+    })
+  },
+
+  displayNoCustomersFound() {
+    $('.tab4-customer-output').html(`<p>No users found</p>`)
+
   }
+
 } 

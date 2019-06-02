@@ -19,6 +19,12 @@ describe('BookingsRepo', function() {
   });
   it('should get the room numbers that are booked by date', function () {
     expect(bookingsRepo.getRoomNumbersBookedByDate('22/02/2020')).to.eql([73, 116, 124])
+  });
+  it('should get the most popular booking date', function () {
+    expect(bookingsRepo.getMostPopularBookingDate()).to.equal('17/12/2019')
+  });
+  it('should get the closest date with the most rooms available', function () {
+    expect(bookingsRepo.getMostAvailableBookingDate()).to.equal('21/08/2019')
   })
 });
 
