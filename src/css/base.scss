@@ -122,6 +122,17 @@ ul.tabs li.current{
   border-right: 1px solid $accentBlue;
 }
 
+.tab3-room-displays {
+  height: 325px;
+  overflow: auto;
+}
+
+.tab3-room-display {
+  width: 50%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $accentBlue;
+}
+
 .tab4-input-container {
   display: flex;
   justify-content: space-around;
@@ -129,4 +140,9 @@ ul.tabs li.current{
 
 #tab4-customer-search {
   width: 25%;
+}
+
+.tab4-customer-output {
+  height: 450px;
+  overflow: auto;
 }

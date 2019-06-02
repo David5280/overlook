@@ -5,6 +5,9 @@ class BookingsRepo {
   getNumberOfAvailableRooms(date) {
     return this.bookingsRepoData.filter(booking => booking.date === date);
   }
+  getBookingsByDate(date) {
+    return this.bookingsRepoData.filter(booking => booking.date === date);
+  }
   getPercentageOfOccupiedRooms(date) {
     const roomsAvailable = this.getNumberOfAvailableRooms(date);
     const result = (roomsAvailable.length / this.bookingsRepoData.length) * 100
@@ -14,6 +17,12 @@ class BookingsRepo {
     let todaysBookedRoomNumbers = this.bookingsRepoData.filter(booking =>booking.date === date).map(obj => obj.roomNumber).sort((a, b) => a - b)
     return todaysBookedRoomNumbers;
   }
+  getRoomNumbersAvailableByDate(roomRepo, date) {
+    let bookedRoomNumbers = this.getRoomNumbersBookedByDate(date);
+    let unbookedRoomNumbers = roomRepo.map(room => room.number).filter(number => !bookedRoomNumbers.includes(number))
+    return unbookedRoomNumbers;
+  }
+    
   getMostPopularBookingDate() {
     let dates = this.bookingsRepoData.map(book => book.date)
     let popularDate = dates.reduce((acc, date) => {

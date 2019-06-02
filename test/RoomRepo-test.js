@@ -16,5 +16,33 @@ describe('RoomRepo', function () {
   it('should get total room revenue by date', function () {
     expect(roomRepo.getTotalRoomRevenueByDate('22/02/2020')).to.equal(853.5999999999999)
   });
+  it('should get room objects by their room numbers', function () {
+    expect(roomRepo.getRoomsByRoomNumbers([73, 116, 124 ])).to.eql([
+      {
+        number: 73,
+        roomType: "junior suite",
+        bidet: true,
+        bedSize: "full",
+        numBeds: 2,
+        costPerNight: 317.58
+      },
+      {
+        number: 116,
+        roomType: "residential suite",
+        bidet: false,
+        bedSize: "full",
+        numBeds: 1,
+        costPerNight: 216.94
+      },
+      {
+        number: 124,
+        roomType: "single room",
+        bidet: true,
+        bedSize: "queen",
+        numBeds: 1,
+        costPerNight: 319.08
+      }
+    ])
+  })
 });
 

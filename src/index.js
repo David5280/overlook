@@ -81,6 +81,14 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
       domUpdates.displayOrdersByDate(orderData);
     });
 
+    $('#tab3-search-btn').click(function (e) {
+      e.preventDefault();
+      let inputDate = $('#tab3-search-room-input').val();
+      let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
+      let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
+      domUpdates.displayAvailableRooms(unbookedRooms)
+    })
+
     $('#tab4-customer-search').on('input', function () {
       let search = $('#tab4-customer-search').val();
       if (search) {
@@ -88,6 +96,11 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
       } else {
         domUpdates.displayNoCustomersFound();
       }
+    })
+
+    $('.tab4-customer-output').click(function (e) {
+      e.preventDefault;
+      console.log(e.target);
     })
 
     domUpdates.displayTodaysDate(today);
@@ -98,6 +111,6 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
   
 
   }
-  setTimeout(timer, 700);
+  setTimeout(timer, 500);
 });
 

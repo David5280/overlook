@@ -25,8 +25,11 @@ class RoomRepo {
     }, 0)
     return totalRoomRevenue;
   }
-  getMostPopularBookingDate() {
-    console.log(this.bookingRepoData)
+  getRoomsByRoomNumbers(roomNumbers) {
+    let rooms = this.roomRepoData.filter(room => {
+      return roomNumbers.includes(room.number);
+    })
+    return rooms;
   }
 }
 
