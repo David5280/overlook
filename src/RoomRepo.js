@@ -1,6 +1,7 @@
 import testBookings from '../testData/testBookings.js' 
 import testRoom from '../testData/testRoom.js'
 import BookingsRepo from './BookingsRepo.js'
+import domUpdates from './domUpdates.js';
 
 class RoomRepo {
   constructor(roomRepoData, bookingsRepoData) {
@@ -30,6 +31,25 @@ class RoomRepo {
       return roomNumbers.includes(room.number);
     })
     return rooms;
+  }
+
+  getRoomsByBed(size) {
+    let rooms = this.roomRepoData.filter(room => {
+      return room.bedSize === size;
+    });
+    console.log(rooms);
+    domUpdates.displayAvailableRooms(rooms)
+  }
+
+  filterRoomsByInput(input) {
+    let inputCased = input.toLowerCase();
+    let filteredRooms = this.roomRepoData.filter(room => 
+      room.roomType.toLowerCase().includes(inputCased))
+    if (filteredRooms.length > 0) {
+      domUpdates.displayAvailableRooms(filteredRooms)
+    } else {
+      domUpdates.displayNoRoomsFound();
+    }
   }
 }
 
