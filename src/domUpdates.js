@@ -66,6 +66,23 @@ export default {
 
   displayNoCustomersFound() {
     $('.tab4-customer-output').html(`<p>No users found</p>`)
+  },
+
+  displayNewCustomerForm() {
+    $('.tab4-new-customer-form').html(`
+    <form class='tab4-new-customer-input-form'>
+      <input type='text' class='tab4-customer-input' placeholder='Enter Customer Name' />
+      <button id='tab4-new-customer-submit' class='tab4-customer-input'>Submit New Customer</button>
+    </form>
+    `)
+  },
+
+  displayNewCustomerName(target, newCustomerName) {
+    if (target.id === 'tab4-new-customer-submit') {
+      $('#tab4-new-customer-submit').hide();
+      $('.tab4-customer-input').hide();
+      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`)
+    }
   }
 
 } 

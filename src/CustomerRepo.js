@@ -16,8 +16,9 @@ class CustomerRepo {
     }
   }
 
-  addCustomer() {
-    let customer = new Customer(420, 'David Engel');
+  addCustomer(customerName) {
+    let customer = new Customer(this.customerData.length + 1, customerName);
+    console.log('a', customer);
     this.customerData.push(customer);
   }
 

@@ -135,14 +135,40 @@ ul.tabs li.current{
 
 .tab4-input-container {
   display: flex;
-  justify-content: space-around;
 }
 
 #tab4-customer-search {
   width: 25%;
 }
 
+.tab4-output-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab4-new-customer-form {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.tab4-new-customer-input-form {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab4-customer-input {
+  margin: auto;
+  width: 80%;
+  height: 25px;
+}
+
 .tab4-customer-output {
   height: 450px;
   overflow: auto;
+  width: 50%;
+  border-right: 1px solid $accentBlue;
 }
