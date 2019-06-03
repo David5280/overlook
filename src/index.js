@@ -80,13 +80,21 @@ $( document ).ready(function() {
       let inputDate = $('#tab3-search-room-input').val();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
       let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
-      if (inputDate.length > 4) {
+      if (inputDate.length > 6) {
         domUpdates.displayAvailableRooms(unbookedRooms)
-      } else {
+        domUpdates.displayFilterRoomInput();
+      } else if (inputDate.length < 6) {
         domUpdates.hideAvailableRooms();
         domUpdates.displayMostPopularBookingDate(bookingsRepo);
       }
-    })
+    });
+
+    $('.tab3-search-dates').on('input', function (e) {
+      let search = $('#tab3-filter-input').val();
+      if ((search) && (e.target.id === 'tab3-filter-input')) {
+        roomRepo.filterRoomsByInput(search);
+      } 
+    });
 
     $('#tab4-add-new-customer-btn').click(function (e) {
       e.preventDefault();
@@ -104,8 +112,8 @@ $( document ).ready(function() {
 
     $('.tab4-new-customer-form').click(function (e) {
       e.preventDefault();
-      if (e.target.id === 'tab4-new-customer-submit') {
-        let newCustomerName = $('.tab4-customer-input').val();
+      let newCustomerName = $('.tab4-customer-input').val();
+      if ((e.target.id === 'tab4-new-customer-submit') && (newCustomerName.length > 2)) {
         domUpdates.displayNewCustomerName(e.target, newCustomerName)
         customerRepo.addCustomer(newCustomerName);
       }
@@ -113,7 +121,7 @@ $( document ).ready(function() {
 
     $('.tab4-customer-output').click(function (e) {
       e.preventDefault();
-      console.log(e.target);
+      e.target;
     });
 
     domUpdates.displayTodaysDate(today);

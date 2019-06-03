@@ -27,6 +27,8 @@ header {
 
 h1 {
   color: $textColor;
+  font-size: 6em;
+  margin: 0px;
 }
 
 main {
@@ -111,8 +113,12 @@ ul.tabs li.current{
 }
 
 #tab3-search-room-input {
-  width: 25%;
+  width: 20%;
   align-self: center;
+}
+
+.tab3-filter-controls {
+  display: flex;
 }
 
 .tab3-default-displays {
@@ -131,6 +137,10 @@ ul.tabs li.current{
   width: 50%;
   padding-bottom: 5px;
   border-bottom: 1px solid $accentBlue;
+}
+
+.tab3-search-dates {
+  display: flex;
 }
 
 .tab4-input-container {
