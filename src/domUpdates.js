@@ -29,6 +29,7 @@ export default {
 
   displayAvailableRooms(availableRooms) {
     if (availableRooms.length > 0) {
+      $('.tab3-popular-date').hide()
       availableRooms.forEach(room => {
         $('.tab3-room-displays').append(`
         <p class='tab3-room-display'>
@@ -42,6 +43,10 @@ export default {
         `)
       })
     }
+  },
+
+  hideAvailableRooms() {
+    $('.tab3-room-displays').hide()
   },
 
   displayRoomServiceRevenueByDate(roomServicesRepo, date) {

@@ -80,7 +80,12 @@ $( document ).ready(function() {
       let inputDate = $('#tab3-search-room-input').val();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
       let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
-      domUpdates.displayAvailableRooms(unbookedRooms)
+      if (inputDate.length > 4) {
+        domUpdates.displayAvailableRooms(unbookedRooms)
+      } else {
+        domUpdates.hideAvailableRooms();
+        domUpdates.displayMostPopularBookingDate(bookingsRepo);
+      }
     })
 
     $('#tab4-add-new-customer-btn').click(function (e) {
