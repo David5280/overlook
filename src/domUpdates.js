@@ -29,6 +29,7 @@ export default {
 
   displayAvailableRooms(availableRooms) {
     if (availableRooms.length > 0) {
+      $('.tab3-popular-date').hide()
       availableRooms.forEach(room => {
         $('.tab3-room-displays').append(`
         <p class='tab3-room-display'>
@@ -42,6 +43,10 @@ export default {
         `)
       })
     }
+  },
+
+  hideAvailableRooms() {
+    $('.tab3-room-displays').hide()
   },
 
   displayRoomServiceRevenueByDate(roomServicesRepo, date) {
@@ -66,6 +71,23 @@ export default {
 
   displayNoCustomersFound() {
     $('.tab4-customer-output').html(`<p>No users found</p>`)
+  },
+
+  displayNewCustomerForm() {
+    $('.tab4-new-customer-form').html(`
+    <form class='tab4-new-customer-input-form'>
+      <input type='text' class='tab4-customer-input' placeholder='Enter Customer Name' />
+      <button id='tab4-new-customer-submit' class='tab4-customer-input'>Submit New Customer</button>
+    </form>
+    `)
+  },
+
+  displayNewCustomerName(target, newCustomerName) {
+    if (target.id === 'tab4-new-customer-submit') {
+      $('#tab4-new-customer-submit').hide();
+      $('.tab4-customer-input').hide();
+      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`)
+    }
   }
 
 } 

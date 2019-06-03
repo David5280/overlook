@@ -24,9 +24,6 @@ if (mm < 10) {
 }
 today = `${dd}/${mm}/${yyyy}`;
 
-
-
-
 var customerData;
 var roomData;
 var roomServiceData;
@@ -52,10 +49,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
   .then(result => bookingsRepoData = result.bookings)
   .catch(err => console.error(err));
 
-
-
-
-  $( document ).ready(function() {
+$( document ).ready(function() {
   function timer() {
     const customerRepo = new CustomerRepo(customerRepoData);
     const roomRepo = new RoomRepo(roomRepoData, bookingsRepoData);
@@ -86,8 +80,18 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
       let inputDate = $('#tab3-search-room-input').val();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
       let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
-      domUpdates.displayAvailableRooms(unbookedRooms)
+      if (inputDate.length > 4) {
+        domUpdates.displayAvailableRooms(unbookedRooms)
+      } else {
+        domUpdates.hideAvailableRooms();
+        domUpdates.displayMostPopularBookingDate(bookingsRepo);
+      }
     })
+
+    $('#tab4-add-new-customer-btn').click(function (e) {
+      e.preventDefault();
+      domUpdates.displayNewCustomerForm()
+    });
 
     $('#tab4-customer-search').on('input', function () {
       let search = $('#tab4-customer-search').val();
@@ -96,12 +100,21 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
       } else {
         domUpdates.displayNoCustomersFound();
       }
-    })
+    });
+
+    $('.tab4-new-customer-form').click(function (e) {
+      e.preventDefault();
+      if (e.target.id === 'tab4-new-customer-submit') {
+        let newCustomerName = $('.tab4-customer-input').val();
+        domUpdates.displayNewCustomerName(e.target, newCustomerName)
+        customerRepo.addCustomer(newCustomerName);
+      }
+    });
 
     $('.tab4-customer-output').click(function (e) {
-      e.preventDefault;
+      e.preventDefault();
       console.log(e.target);
-    })
+    });
 
     domUpdates.displayTodaysDate(today);
     domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
