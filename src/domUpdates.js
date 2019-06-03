@@ -28,7 +28,6 @@ export default {
   },
 
   displayAvailableRooms(availableRooms) {
-    $('.tab3-room-displays').text('');
     if (availableRooms.length > 0) {
       $('.tab3-popular-date').hide()
       availableRooms.forEach(room => {
@@ -46,17 +45,6 @@ export default {
     }
   },
 
-  displayNoRoomsFound() {
-    $('.tab3-room-displays').html(`<p>No rooms found</p>`)
-  },
-
-  displayFilterRoomInput() {
-    $('#tab3-filter-input').remove();
-    $('.tab3-search-dates').append(`
-    <input type='text' id='tab3-filter-input' />
-    `)
-  },
-
   hideAvailableRooms() {
     $('.tab3-room-displays').hide()
   },
@@ -68,8 +56,7 @@ export default {
 
   displayMostPopularBookingDate(bookingsRepo) {
     let mostPopularDate = bookingsRepo.getMostPopularBookingDate();
-    let leastPopularDate = bookingsRepo.getMostAvailableBookingDate(); 
-    $('.tab3-default-displays').text('');
+    let leastPopularDate = bookingsRepo.getMostAvailableBookingDate();  
     $('.tab3-default-displays').append(`<p class='tab3-popular-date'>Most Popular Booking Date:  <span class='info-bold'>${mostPopularDate}</span> with <span class='info-bold'>${bookingsRepo.getRoomNumbersBookedByDate(mostPopularDate).length}</span> bookings.<br />
     Most Available Booking Date:  <span class='info-bold'>${leastPopularDate}</span> with <span class='info-bold'>${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(leastPopularDate).length}</span> rooms available.
     </p>`)
@@ -78,7 +65,7 @@ export default {
   searchCustomers(users) {
     $('.tab4-customer-output').text('');
     users.forEach(user => {
-      $('.tab4-customer-output').append(`<p class='tab4-customer' id='${user.id}'><span class='info-bold'>${user.name}</span> || Customer ID: <span class='info-bold'>${user.id}</span></p>`)
+      $('.tab4-customer-output').append(`<p class='tab4-customer' id='${user.id}'>${user.name} || Customer ID: ${user.id}</p>`)
     })
   },
 
@@ -99,7 +86,7 @@ export default {
     if (target.id === 'tab4-new-customer-submit') {
       $('#tab4-new-customer-submit').hide();
       $('.tab4-customer-input').hide();
-      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut();
+      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut()
     }
   }
 } 

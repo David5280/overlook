@@ -94,7 +94,7 @@ $( document ).ready(function() {
       if ((search) && (e.target.id === 'tab3-filter-input')) {
         roomRepo.filterRoomsByInput(search);
       } 
-    });
+    })
 
     $('#tab4-add-new-customer-btn').click(function (e) {
       e.preventDefault();

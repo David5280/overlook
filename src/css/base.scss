@@ -31,6 +31,10 @@ h1 {
   margin: 0px;
 }
 
+h3 {
+  margin: 0px;
+}
+
 main {
   height: 100%;
 }
@@ -112,35 +116,61 @@ ul.tabs li.current{
   font-weight: 800;
 }
 
+#tab-3 {
+  display: flex;
+}
+
 #tab3-search-room-input {
-  width: 20%;
-  align-self: center;
+  width: 100%;
+}
+
+#tab3-search-btn {
+  width: 100%;
+}
+
+.tab3-display-info {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid $accentBlue;
+  max-height: 480px;
 }
 
 .tab3-filter-controls {
   display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+#tab3-filter-input {
+  height: 40px;
+  width: 25%;
 }
 
 .tab3-default-displays {
   display: flex;
   justify-content: center;
-  width: 50%;
-  border-right: 1px solid $accentBlue;
+  width: 100%;
 }
 
 .tab3-room-displays {
   height: 440px;
+  width: 100%;
   overflow: auto;
 }
 
 .tab3-room-display {
-  width: 50%;
+  width: 100%;
   padding-bottom: 5px;
   border-bottom: 1px solid $accentBlue;
 }
 
 .tab3-search-dates {
   display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 40px;
 }
 
 .tab4-input-container {
