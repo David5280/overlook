@@ -33,13 +33,6 @@ class RoomRepo {
     return rooms;
   }
 
-  getAllTwinRooms() {
-    let twinRooms = this.roomRepoData.filter(room => {
-      return room.bedSize === 'twin';
-    });
-    return twinRooms
-  }
-
   filterRoomsByInput(input) {
     let filteredRooms = this.roomRepoData.filter(room => 
       room.roomType.toLowerCase().includes(input))

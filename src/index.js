@@ -70,7 +70,7 @@ $( document ).ready(function() {
 
     $('#tab2-submit-search').click(function (e) {
       e.preventDefault();
-      $('.tab2-days-orders').text('');
+      $('.tab2-days-orders').html('');
       let inputDate = $('#tab2-date-input').val();
       let orderData = roomServicesRepo.getOrdersByDate(inputDate); 
       domUpdates.displayOrdersByDate(orderData);
@@ -78,6 +78,7 @@ $( document ).ready(function() {
 
     $('#tab3-search-btn').click(function (e) {
       e.preventDefault();
+      $('.tab3-room-displays').html('');
       let inputDate = $('#tab3-search-room-input').val();
       $('#room-select').hide();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
@@ -98,6 +99,17 @@ $( document ).ready(function() {
       }
     });
 
+    $('#tab3-add-booking-btn').click(function (e) {
+      e.preventDefault();
+      $('.tab3-popular-date').html('');
+      domUpdates.displayNewBookingForm()
+    });
+
+    $('.tab3-submit-booking-btn').click(function(e) {
+      e.preventDefault();
+      console.log('ayeee')
+    })
+
     $('#tab4-add-new-customer-btn').click(function (e) {
       e.preventDefault();
       domUpdates.displayNewCustomerForm()
@@ -115,14 +127,26 @@ $( document ).ready(function() {
       let newCustomerName = $('.tab4-customer-input').val();
       if ((e.target.id === 'tab4-new-customer-submit') && (newCustomerName.length > 2)) {
         domUpdates.displayNewCustomerName(e.target, newCustomerName)
+        domUpdates.displayFocusedUserName(newCustomerName);
         customerRepo.addCustomer(newCustomerName);
       }
     });
 
     $('.tab4-customer-output').click(function (e) {
       e.preventDefault();
-      e.target;
+      $('.tab2-days-orders').html('');
+      let userBookings = bookingsRepo.getBookingsById(e.target.id);
+      let userOrders = roomServicesRepo.getOrdersById(e.target.id);
+      let userName = customerRepo.findCustomerNameById(e.target.id);
+      domUpdates.displayUserBookings(userBookings);
+      domUpdates.displayOrdersByDate(userOrders);
+      domUpdates.displayFocusedUserName(userName.name);
     });
+
+    $('.main-customer-name-output').click(function (e) {
+      e.preventDefault();
+      domUpdates.hideFocusedUserName();
+    })
 
     domUpdates.displayTodaysDate(today);
     domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
@@ -132,6 +156,6 @@ $( document ).ready(function() {
   
 
   }
-  setTimeout(timer, 500);
+  setTimeout(timer, 750);
 });
 

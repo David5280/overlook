@@ -41,6 +41,11 @@ class BookingsRepo {
     let mostAvailableDate = Object.entries(popularDate).sort((a, b) => a[1] - b[1]).shift()[0]
     return mostAvailableDate;
   }
+  getBookingsById(userId) {
+    let ID = parseInt(userId)
+    let userBookings = this.bookingsRepoData.filter(booking => booking.userID === ID);
+    return userBookings
+  }
 }
 
 export default BookingsRepo;
