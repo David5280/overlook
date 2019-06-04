@@ -59,6 +59,7 @@ $( document ).ready(function() {
 
     $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
+
   
       $('ul.tabs li').removeClass('current');
       $('.tab-content').removeClass('current');
@@ -78,23 +79,24 @@ $( document ).ready(function() {
     $('#tab3-search-btn').click(function (e) {
       e.preventDefault();
       let inputDate = $('#tab3-search-room-input').val();
+      $('#room-select').hide();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
       let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
-      if (inputDate.length > 6) {
+      const dateRegEx = /^\d{2}\/\d{2}\/\d{4}$/;
+      if (dateRegEx.test(inputDate)) {
         domUpdates.displayAvailableRooms(unbookedRooms)
         domUpdates.displayFilterRoomInput();
-      } else if (inputDate.length < 6) {
+        $('.tab3-controls').on('change', function (e) {
+          e.preventDefault();
+          $('.tab3-room-displays').html('');
+          // $('.tab3-controls').toggle();
+          roomRepo.filterRoomsByInput(e.target.value);
+        })
+      } else {
         domUpdates.hideAvailableRooms();
         domUpdates.displayMostPopularBookingDate(bookingsRepo);
       }
     });
-
-    $('.tab3-search-dates').on('input', function (e) {
-      let search = $('#tab3-filter-input').val();
-      if ((search) && (e.target.id === 'tab3-filter-input')) {
-        roomRepo.filterRoomsByInput(search);
-      } 
-    })
 
     $('#tab4-add-new-customer-btn').click(function (e) {
       e.preventDefault();
@@ -105,9 +107,7 @@ $( document ).ready(function() {
       let search = $('#tab4-customer-search').val();
       if (search) {
         customerRepo.searchCustomers(search)
-      } else {
-        domUpdates.displayNoCustomersFound();
-      }
+      } 
     });
 
     $('.tab4-new-customer-form').click(function (e) {

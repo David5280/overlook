@@ -97,13 +97,14 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-  background: #ededed;
+  background: $secondaryColor;
   color: #222;
 }
 
-.tab-content{
+.tab-content,
+.tab-content-3 {
   display: none;
-  background: #ededed;
+  background: $secondaryColor;
   padding: 15px;
   height: 500px;
 }
@@ -112,20 +113,17 @@ ul.tabs li.current{
   display: inherit;
 }
 
+.flex {
+  display: flex;
+}
+
 .info-bold {
   font-weight: 800;
 }
 
-#tab-3 {
-  display: flex;
-}
-
-#tab3-search-room-input {
-  width: 100%;
-}
-
-#tab3-search-btn {
-  width: 100%;
+.tab3-controls {
+  width: 33%;
+  height: 25px;
 }
 
 .tab3-display-info {
@@ -135,11 +133,18 @@ ul.tabs li.current{
   align-items: center;
   border-right: 1px solid $accentBlue;
   max-height: 480px;
+  margin: none;
+  padding: 0px;
+}
+
+.tab3-filters {
+  margin-left: auto;
 }
 
 .tab3-filter-controls {
   display: flex;
   justify-content: center;
+  margin-left: auto;
   width: 50%;
 }
 

@@ -41,9 +41,8 @@ class RoomRepo {
   }
 
   filterRoomsByInput(input) {
-    let inputCased = input.toLowerCase();
     let filteredRooms = this.roomRepoData.filter(room => 
-      room.roomType.toLowerCase().includes(inputCased))
+      room.roomType.toLowerCase().includes(input))
     if (filteredRooms.length > 0) {
       domUpdates.displayAvailableRooms(filteredRooms)
     } else {
