@@ -12,7 +12,7 @@ class CustomerRepo {
     if (filteredCustomers.length > 0) {
       domUpdates.searchCustomers(filteredCustomers)
     } else {
-      domUpdates.displayNoCustomersFound()
+      domUpdates.displayNoCustomersFound();
     }
   }
 

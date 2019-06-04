@@ -33,18 +33,16 @@ class RoomRepo {
     return rooms;
   }
 
-  getRoomsByBed(size) {
-    let rooms = this.roomRepoData.filter(room => {
-      return room.bedSize === size;
+  getAllTwinRooms() {
+    let twinRooms = this.roomRepoData.filter(room => {
+      return room.bedSize === 'twin';
     });
-    console.log(rooms);
-    domUpdates.displayAvailableRooms(rooms)
+    return twinRooms
   }
 
   filterRoomsByInput(input) {
-    let inputCased = input.toLowerCase();
     let filteredRooms = this.roomRepoData.filter(room => 
-      room.roomType.toLowerCase().includes(inputCased))
+      room.roomType.toLowerCase().includes(input))
     if (filteredRooms.length > 0) {
       domUpdates.displayAvailableRooms(filteredRooms)
     } else {

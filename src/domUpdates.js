@@ -28,9 +28,10 @@ export default {
   },
 
   displayAvailableRooms(availableRooms) {
-    $('.tab3-room-displays').text('');
     if (availableRooms.length > 0) {
       $('.tab3-popular-date').hide()
+      // $('.tab3-room-displays').show()
+      // $('.tab3-controls').hide();
       availableRooms.forEach(room => {
         $('.tab3-room-displays').append(`
         <p class='tab3-room-display'>
@@ -38,7 +39,7 @@ export default {
         Room Type: <span class='info-bold'>${room.roomType}</span><br />
         Bed Size:  <span class='info-bold'>${room.bedSize}</span><br />
         Number of Beds: <span class='info-bold'>${room.numBeds}</span><br />
-      Bidet:  <span class='info-bold'>${room.bidet ? 'Yes!' : 'No.'}</span><br />
+        Bidet:  <span class='info-bold'>${room.bidet ? 'Yes!' : 'No.'}</span><br />
         Nightly Cost:  <span class='info-bold'>$${room.costPerNight}</span><br />
         </p>
         `)
@@ -46,19 +47,24 @@ export default {
     }
   },
 
+  hideAvailableRooms() {
+    $('.tab3-room-displays').hide()
+  },
+
   displayNoRoomsFound() {
     $('.tab3-room-displays').html(`<p>No rooms found</p>`)
   },
 
   displayFilterRoomInput() {
-    $('#tab3-filter-input').remove();
+    // $('.tab3-search-dates').html('');
     $('.tab3-search-dates').append(`
-    <input type='text' id='tab3-filter-input' />
+    <select id="room-select" class='tab3-controls'>
+    <option value="">--Please choose an option--</option>
+    <option value="single room">Single Room</option>
+    <option value="junior suite">Junior Suite</option>
+    <option value="residential suite">Residential Suite</option>
+    </select>
     `)
-  },
-
-  hideAvailableRooms() {
-    $('.tab3-room-displays').hide()
   },
 
   displayRoomServiceRevenueByDate(roomServicesRepo, date) {
@@ -68,7 +74,7 @@ export default {
 
   displayMostPopularBookingDate(bookingsRepo) {
     let mostPopularDate = bookingsRepo.getMostPopularBookingDate();
-    let leastPopularDate = bookingsRepo.getMostAvailableBookingDate(); 
+    let leastPopularDate = bookingsRepo.getMostAvailableBookingDate();  
     $('.tab3-default-displays').text('');
     $('.tab3-default-displays').append(`<p class='tab3-popular-date'>Most Popular Booking Date:  <span class='info-bold'>${mostPopularDate}</span> with <span class='info-bold'>${bookingsRepo.getRoomNumbersBookedByDate(mostPopularDate).length}</span> bookings.<br />
     Most Available Booking Date:  <span class='info-bold'>${leastPopularDate}</span> with <span class='info-bold'>${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(leastPopularDate).length}</span> rooms available.
@@ -77,9 +83,11 @@ export default {
 
   searchCustomers(users) {
     $('.tab4-customer-output').text('');
-    users.forEach(user => {
-      $('.tab4-customer-output').append(`<p class='tab4-customer' id='${user.id}'><span class='info-bold'>${user.name}</span> || Customer ID: <span class='info-bold'>${user.id}</span></p>`)
-    })
+    if (users) {
+      (users.forEach(user => {
+        $('.tab4-customer-output').append(`<p class='tab4-customer' id='${user.id}'> ${user.name} || Customer ID: ${user.id}</p>`)
+      }))
+    }
   },
 
   displayNoCustomersFound() {
@@ -99,7 +107,7 @@ export default {
     if (target.id === 'tab4-new-customer-submit') {
       $('#tab4-new-customer-submit').hide();
       $('.tab4-customer-input').hide();
-      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut();
+      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut()
     }
   }
 } 
