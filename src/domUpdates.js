@@ -18,9 +18,18 @@ export default {
   },
 
   displayOrdersByDate(orders) {
+    $('.tab2-no-orders-notice').html('');
+    $('.tab2-revenue-display').html('');
+
     if (orders.length > 0) {
       orders.forEach(order => {
-        $('.tab2-days-orders').append(`<p class='tab2-days-orders-text'>Customer ID: <span class='info-bold'>${order.userID}</span> <br />Purchase: <span class='info-bold'>${order.food}</span> <br />Total Cost: <span class='info-bold'>$${order.totalCost}</span><p>`)
+        $('.tab2-days-orders').append(`
+        <p class='tab2-days-orders-text'>
+        Customer ID: <span class='info-bold'>${order.userID}</span> <br />
+        Date of Purchase: <span class='info-bold'>${order.date}</span><br />
+        Purchase: <span class='info-bold'>${order.food}</span><br />
+        Total Cost: <span class='info-bold'>$${order.totalCost}</span>
+        </p>`)
       })
     }   else {
       $('.tab2-days-orders').append(`<p class='tab2-no-orders-notice'>No Orders To Display</p>`);
@@ -47,6 +56,20 @@ export default {
     }
   },
 
+  displayUserBookings(bookings) {
+    $('.tab3-room-displays').html('');
+    $('.tab3-popular-date').html('');
+    bookings.forEach(booking => {
+      $('.tab3-room-displays').append(`
+      <p class='tab3-booking-display'>
+      Customer ID:  <span class='info-bold'>${booking.userID}</span><br />
+      Date:  <span class='info-bold'>${booking.date}</span><br />
+      Room Number:  <span class='info-bold'>${booking.roomNumber}</span>
+      </p>
+    `)
+    })
+  },
+
   hideAvailableRooms() {
     $('.tab3-room-displays').hide()
   },
@@ -67,8 +90,20 @@ export default {
     `)
   },
 
+  displayNewBookingForm() {
+    $('.tab3-room-displays').append(`
+    <form class='tab3-new-booking-form'>
+      <input class='tab3-new-booking-input' placeholder='Enter a Date' />
+      <input class='tab3-new-booking-input' placeholder='Enter a customer ID' />
+      <input class='tab3-new-booking-input' placeholder='Enter a Room Number' />
+      <button class='tab3-submit-booking-btn'>Add Booking</button>
+      <button class='tab3-cancel-submission-btn'>Cancel</button>
+    </form>
+    `)
+  },
+
   displayRoomServiceRevenueByDate(roomServicesRepo, date) {
-    $('.tab2-days-orders').append(`<p>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(date)} <br />
+    $('.tab2-days-orders').append(`<p class='tab2-revenue-display'>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(date)} <br />
     </p>`);
   },
 
@@ -89,9 +124,21 @@ export default {
       }))
     }
   },
-
+  
   displayNoCustomersFound() {
-    $('.tab4-customer-output').html(`<p>No users found</p>`)
+    $('.tab4-customer-output').html(`<p>No users found</p>`) 
+  },
+
+  displayFocusedUserName(name) {
+    $('.main-customer-name-output').html(`
+    <h2 class='main-display-customer-name'>Now Viewing: ${name}
+    <button class='main-hide-customer-name'>Exit</Button>
+    </h2>
+    `)
+  },
+
+  hideFocusedUserName() {
+    $('.main-customer-name-output').html('');
   },
 
   displayNewCustomerForm() {

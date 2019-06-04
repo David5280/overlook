@@ -22,17 +22,15 @@ class CustomerRepo {
     this.customerData.push(customer);
   }
 
-  findCustomerByName(name) {
-    return this.customerData.find(customer => customer.name.toUpperCase() === name.toUpperCase());
+  findCustomerNameById(userId) {
+    let ID = parseInt(userId);
+    return this.customerData.find(customer => customer.id === ID);
   }
 
   validateCustomer(name) {
     let customerNames = this.customerData.map(customer => customer.name.toUpperCase());
     return customerNames.includes(name.toUpperCase()) ? true : false;
   }
-  // calculateTotalBill() {
- 
-  // }
 }
 
 export default CustomerRepo;

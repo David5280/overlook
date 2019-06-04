@@ -10,9 +10,10 @@
     <main>
         <div class="container">
           <ul class="tabs">
+              <section class='main-customer-name-output'></section>
               <li class="tab-link current" data-tab="tab-1">MAIN</li>
               <li class="tab-link" data-tab="tab-2">ORDERS</li>
-              <li class="tab-link" data-tab="tab-3">ROOMS</li>
+              <li class="tab-link" data-tab="tab-3">ROOMS/BOOKING</li>
               <li class="tab-link" data-tab="tab-4">CUSTOMERS</li>
             </ul>
 
@@ -22,7 +23,7 @@
             </article>
 
             <article id="tab-2" class="tab-content">
-              <h3 id='tab2-todays-orders'>Today's Order's</h3>
+              <h3 id='tab2-todays-orders'>Orders</h3>
               <form>
                 <input type="text" id="tab2-date-input" placeholder="Search: dd/mm/yyyy"/>
                 <input type='submit' id='tab2-submit-search'>
@@ -35,6 +36,7 @@
                 <form class='tab3-search-dates'>
                   <input type='text' id="tab3-search-room-input" class='tab3-controls' placeholder='Search Rooms:  dd/mm/yyyy'>
                   <button id='tab3-search-btn' class='tab3-controls'>Search</button>
+                  <button id='tab3-add-booking-btn' class='tab3-controls'>Add Booking</button>
                 </form>
                 <section class='tab3-filter-controls'></section>
                 <section class='tab3-default-displays'></section>

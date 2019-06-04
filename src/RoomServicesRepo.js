@@ -13,6 +13,11 @@ class RoomServicesRepo {
   getOrdersByDate(date) {
     return this.roomServicesRepoData.filter(order => order.date === date);
   }
+  getOrdersById(userId) {
+    let ID = parseInt(userId);
+    let userOrders = this.roomServicesRepoData.filter(order => order.userID === ID);
+    return userOrders;
+  }
 }
 
 export default RoomServicesRepo;
