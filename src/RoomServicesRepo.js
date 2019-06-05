@@ -5,19 +5,17 @@ class RoomServicesRepo {
   constructor(roomServicesRepoData) {
     this.roomServicesRepoData = roomServicesRepoData;
   }
-  // addNewOrder() {
-  //   let order = new Order(this.roomServicesRepoData.length + 1, customerName);
-  //   console.log('a', customer);
-  //   this.customerData.push(customer);
-  // }
+
   getOrdersByDate(date) {
     return this.roomServicesRepoData.filter(order => order.date === date);
   }
+
   getOrdersById(userId) {
     let ID = parseInt(userId);
     let userOrders = this.roomServicesRepoData.filter(order => order.userID === ID);
     return userOrders;
   }
+  
   getRoomServiceRevenueByDate(date) {
     let todaysTransactions = this.roomServicesRepoData.filter(transaction => transaction.date === date);
     let totalAmount = todaysTransactions.reduce((acc, transaction2) => {

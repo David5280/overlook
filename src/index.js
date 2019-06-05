@@ -49,7 +49,7 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
   .then(result => bookingsRepoData = result.bookings)
   .catch(err => console.error(err));
 
-$( document ).ready(function() {
+$(document).ready(function() {
   function timer() {
     const customerRepo = new CustomerRepo(customerRepoData);
     const roomRepo = new RoomRepo(roomRepoData, bookingsRepoData);
@@ -60,10 +60,9 @@ $( document ).ready(function() {
     $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
 
-  
       $('ul.tabs li').removeClass('current');
       $('.tab-content').removeClass('current');
-  
+
       $(this).addClass('current');
       $("#" + tab_id).addClass('current');
     });
@@ -101,7 +100,6 @@ $( document ).ready(function() {
       if (e.target.id === 'tab3-add-booking-btn') {
         domUpdates.displayNewBookingForm()
       }
-      // $('.tab3-popular-date').html('');
     });
 
     $('.tab3-room-displays').click(function(e) {
@@ -139,7 +137,6 @@ $( document ).ready(function() {
         domUpdates.displayNewCustomerName(e.target, newCustomerName)
         domUpdates.displayFocusedUserName(newCustomerName);
         customerRepo.addCustomer(newCustomerName);
-
       } 
       if ((e.target.id === 'tab4-cancel-customer-submit')) {
         domUpdates.hideNewCustomerForm();
@@ -167,15 +164,13 @@ $( document ).ready(function() {
         domUpdates.hideAvailableRooms(bookingsRepo);
         domUpdates.hideOrders(roomServicesRepo, today);
       }
-    })
+    });
 
     domUpdates.displayTodaysDate(today);
     domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
     domUpdates.displayOrders(orderData);
     domUpdates.displayRoomServiceRevenueByDate(roomServicesRepo, today);
     domUpdates.displayMostPopularBookingDate(bookingsRepo);
-  
-
   }
   setTimeout(timer, 750);
 });
