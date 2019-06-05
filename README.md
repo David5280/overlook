@@ -22,11 +22,20 @@ One week was allowed for the completion of **Overwatch**.
  This project helped to solidify concepts, techniques, and principles learned over the past twelve weeks.
 
  ## Screenshots
+ 
  Main tab:
+ 
+ ![Overwatch main tab](https://github.com/David5280/overlook/blob/master/src/images/Main.png)
 
  Orders tab:
+ 
+ ![Overwatch orders tab](https://github.com/David5280/overlook/blob/master/src/images/Orders.png)
 
  Rooms/Booking tab:
+ 
+ ![Overwatch room/bookings tab](https://github.com/David5280/overlook/blob/master/src/images/Rooms:booking.png)
 
  Customers tab:
+ 
+ ![Overwatch customers tab](https://github.com/David5280/overlook/blob/master/src/images/Customers.png)
 
