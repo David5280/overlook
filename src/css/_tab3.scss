@@ -1,0 +1,85 @@
+.tab3-controls {
+  width: 25%;
+  height: 25px;
+}
+
+.tab3-display-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 480px;
+  margin: none;
+  padding: 0px;
+}
+
+.tab3-filters {
+  margin-left: auto;
+}
+
+.tab3-filter-controls {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  width: 50%;
+}
+
+#tab3-filter-input {
+  height: 40px;
+  width: 25%;
+}
+
+.tab3-default-displays {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.tab3-room-displays {
+  height: 440px;
+  width: 100%;
+  margin-right: auto;
+  overflow: auto;
+}
+
+.tab3-booking-display {
+  width: 50%;
+  display: inline-block;
+  border-right: 1px solid $accentBlue;
+  border-bottom: 1px solid $accentBlue;
+}
+
+.tab3-room-display {
+  width: 50%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $accentBlue;
+  border-right: 1px solid $accentBlue;
+}
+
+.tab3-search-dates {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+}
+
+.tab3-new-booking-form {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 275px;
+  padding: 25px;
+  margin-left: auto;
+  margin-bottom: auto;
+  position: absolute;
+  bottom: 225px;
+  left: 50%;
+}
+
+.tab3-submit-booking-btn {
+  margin-top: 20px;
+}
+
+.tab3-new-booking-input {
+  margin: 5px 0px;
+}

@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background-color: $backgroundColor;
+  font-family: 'Trebuchet MS', serif;
+  line-height: 1.6
+}
+
+.info-bold {
+  font-weight: 800;
+}
