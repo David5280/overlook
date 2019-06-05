@@ -160,9 +160,9 @@ export default {
     $('.tab4-customer-output').html(`<p>No users found</p>`) 
   },
 
-  displayFocusedUserName(name) {
+  displayFocusedUserName(name, id) {
     $('.main-customer-name-output').html(`
-    <h2 class='main-display-customer-name'>Now Viewing: ${name}
+    <h2 class='main-display-customer-name'>Now Viewing: ${name} || ID: ${id}
     <button class='main-hide-customer-name'>Exit</Button>
     </h2>
     `)
