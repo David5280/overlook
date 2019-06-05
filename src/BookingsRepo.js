@@ -1,6 +1,14 @@
+import Booking from './Booking'
+
 class BookingsRepo {
   constructor(bookingsRepoData) {
     this.bookingsRepoData = bookingsRepoData;
+  }
+  addNewBooking(newBookingCustomerId, newBookingDate, newBookingRoomNumber) {
+    let booking = new Booking(newBookingCustomerId, newBookingDate, newBookingRoomNumber);
+    console.log(booking);
+    this.bookingsRepoData.push(booking);
+    console.log(this.bookingsRepoData)
   }
   getNumberOfAvailableRooms(date) {
     return this.bookingsRepoData.filter(booking => booking.date === date);

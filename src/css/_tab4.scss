@@ -1,0 +1,49 @@
+.tab4-input-container {
+  display: flex;
+}
+
+#tab4-customer-search {
+  width: 30%;
+  cursor: pointer;
+}
+
+.tab4-output-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab4-new-customer-form {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+#tab4-add-new-customer-btn {
+  width: 20%;
+}
+
+.tab4-new-customer-input-form {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab4-customer:hover {
+  cursor: pointer;
+  background-color: $backgroundColor;
+}
+
+.tab4-customer-input {
+  margin: auto;
+  width: 80%;
+  height: 25px;
+}
+
+.tab4-customer-output {
+  height: 450px;
+  overflow: auto;
+  width: 50%;
+  border-right: 1px solid $accentBlue;
+}
