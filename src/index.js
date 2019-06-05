@@ -73,24 +73,21 @@ $( document ).ready(function() {
       $('.tab2-days-orders').html('');
       let inputDate = $('#tab2-date-input').val();
       let orderData = roomServicesRepo.getOrdersByDate(inputDate); 
-      domUpdates.displayOrdersByDate(orderData);
+      domUpdates.displayOrders(orderData);
     });
 
     $('#tab3-search-btn').click(function (e) {
       e.preventDefault();
       $('.tab3-room-displays').html('');
       let inputDate = $('#tab3-search-room-input').val();
-      $('#room-select').hide();
       let unbookedRoomNumbers = bookingsRepo.getRoomNumbersAvailableByDate(roomRepoData, inputDate);
       let unbookedRooms = roomRepo.getRoomsByRoomNumbers(unbookedRoomNumbers);
       const dateRegEx = /^\d{2}\/\d{2}\/\d{4}$/;
       if (dateRegEx.test(inputDate)) {
         domUpdates.displayAvailableRooms(unbookedRooms)
-        domUpdates.displayFilterRoomInput();
         $('.tab3-controls').on('change', function (e) {
           e.preventDefault();
           $('.tab3-room-displays').html('');
-          // $('.tab3-controls').toggle();
           roomRepo.filterRoomsByInput(e.target.value);
         })
       } else {
@@ -99,16 +96,29 @@ $( document ).ready(function() {
       }
     });
 
-    $('#tab3-add-booking-btn').click(function (e) {
+    $('.tab3-search-dates').click(function (e) {
       e.preventDefault();
-      $('.tab3-popular-date').html('');
-      domUpdates.displayNewBookingForm()
+      if (e.target.id === 'tab3-add-booking-btn') {
+        domUpdates.displayNewBookingForm()
+      }
+      // $('.tab3-popular-date').html('');
     });
 
-    $('.tab3-submit-booking-btn').click(function(e) {
+    $('.tab3-room-displays').click(function(e) {
       e.preventDefault();
-      console.log('ayeee')
-    })
+      if (e.target.className === 'tab3-cancel-submission-btn') {
+        domUpdates.hideNewBookingForm();
+      }
+      if (e.target.className === 'tab3-submit-booking-btn') {
+        let newBookingCustomerId = parseInt($('#tab3-new-booking-CusId').val());
+        let newBookingDate = $('#tab3-new-booking-date').val();
+        let newBookingRoomNumber = $('#tab3-new-booking-roomNum').val();
+        bookingsRepo.addNewBooking(newBookingCustomerId, newBookingDate, newBookingRoomNumber)
+        domUpdates.cleanNewBookingInputs();
+        domUpdates.hideNewBookingForm();
+        domUpdates.displayNewBookingConfirmation(newBookingCustomerId, newBookingDate, newBookingRoomNumber)
+      }
+    });
 
     $('#tab4-add-new-customer-btn').click(function (e) {
       e.preventDefault();
@@ -129,6 +139,10 @@ $( document ).ready(function() {
         domUpdates.displayNewCustomerName(e.target, newCustomerName)
         domUpdates.displayFocusedUserName(newCustomerName);
         customerRepo.addCustomer(newCustomerName);
+
+      } 
+      if ((e.target.id === 'tab4-cancel-customer-submit')) {
+        domUpdates.hideNewCustomerForm();
       }
     });
 
@@ -139,18 +153,25 @@ $( document ).ready(function() {
       let userOrders = roomServicesRepo.getOrdersById(e.target.id);
       let userName = customerRepo.findCustomerNameById(e.target.id);
       domUpdates.displayUserBookings(userBookings);
-      domUpdates.displayOrdersByDate(userOrders);
+      domUpdates.displayOrders(userOrders);
+      domUpdates.displayTotalOrderRevenue(userOrders)
       domUpdates.displayFocusedUserName(userName.name);
+      domUpdates.displayAddNewBookingBtn();
+      domUpdates.hideCustomerList();
     });
 
     $('.main-customer-name-output').click(function (e) {
       e.preventDefault();
-      domUpdates.hideFocusedUserName();
+      if (e.target.className === 'main-hide-customer-name') {
+        domUpdates.hideFocusedUserName();
+        domUpdates.hideAvailableRooms(bookingsRepo);
+        domUpdates.hideOrders(roomServicesRepo, today);
+      }
     })
 
     domUpdates.displayTodaysDate(today);
     domUpdates.displayMainTabInfo(bookingsRepo, roomRepo, today);
-    domUpdates.displayOrdersByDate(orderData);
+    domUpdates.displayOrders(orderData);
     domUpdates.displayRoomServiceRevenueByDate(roomServicesRepo, today);
     domUpdates.displayMostPopularBookingDate(bookingsRepo);
   

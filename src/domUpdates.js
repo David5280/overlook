@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import RoomServicesRepo from './RoomServicesRepo';
+import BookingsRepo from './BookingsRepo'
 
 export default {
 
@@ -17,7 +18,7 @@ export default {
     Hotel Capacity: <span class='info-bold'>${bookingsRepo.getPercentageOfOccupiedRooms(date)}%</span></p>`);
   },
 
-  displayOrdersByDate(orders) {
+  displayOrders(orders) {
     $('.tab2-no-orders-notice').html('');
     $('.tab2-revenue-display').html('');
 
@@ -36,11 +37,26 @@ export default {
     }
   },
 
+  displayTotalOrderRevenue(userOrders) {
+    let revenue = userOrders.reduce((acc, order) => {
+      acc += order.totalCost;
+      return acc;
+    }, 0).toFixed(2);
+    $('.tab2-days-orders').append(`Total Revenue:  <span class='info-bold'>$${revenue}</span>`)
+  },
+
+  hideOrders(roomServicesRepo, today) {
+    $('.tab2-days-orders').html('');
+    $('.tab2-days-orders').append(`<p class='tab2-no-orders-notice'>No Orders To Display for Today</p><br />
+    <p class='tab2-revenue-display'>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(today)} <br />
+    </p>
+    `);
+    
+  },
+
   displayAvailableRooms(availableRooms) {
     if (availableRooms.length > 0) {
       $('.tab3-popular-date').hide()
-      // $('.tab3-room-displays').show()
-      // $('.tab3-controls').hide();
       availableRooms.forEach(room => {
         $('.tab3-room-displays').append(`
         <p class='tab3-room-display'>
@@ -70,36 +86,46 @@ export default {
     })
   },
 
-  hideAvailableRooms() {
-    $('.tab3-room-displays').hide()
+  hideAvailableRooms(bookingsRepo) {
+    $('.tab3-room-displays').html('')
+    this.displayMostPopularBookingDate(bookingsRepo)
   },
 
   displayNoRoomsFound() {
     $('.tab3-room-displays').html(`<p>No rooms found</p>`)
   },
 
-  displayFilterRoomInput() {
-    // $('.tab3-search-dates').html('');
+  displayAddNewBookingBtn() {
+    $('#tab3-add-booking-btn').remove();
     $('.tab3-search-dates').append(`
-    <select id="room-select" class='tab3-controls'>
-    <option value="">--Please choose an option--</option>
-    <option value="single room">Single Room</option>
-    <option value="junior suite">Junior Suite</option>
-    <option value="residential suite">Residential Suite</option>
-    </select>
+    <button id='tab3-add-booking-btn' class='tab3-controls'>Add Booking</button>
     `)
+  },
+
+  hideAddNewBookingBtn() {
+    $('#tab3-add-booking-btn').hide('');
   },
 
   displayNewBookingForm() {
     $('.tab3-room-displays').append(`
     <form class='tab3-new-booking-form'>
-      <input class='tab3-new-booking-input' placeholder='Enter a Date' />
-      <input class='tab3-new-booking-input' placeholder='Enter a customer ID' />
-      <input class='tab3-new-booking-input' placeholder='Enter a Room Number' />
+      <input id='tab3-new-booking-date' class='tab3-new-booking-input' placeholder='Date: dd/mm/yyyy' />
+      <input id='tab3-new-booking-CusId' class='tab3-new-booking-input' placeholder='Enter a customer ID' />
+      <input id='tab3-new-booking-roomNum' class='tab3-new-booking-input' placeholder='Enter a Room Number' />
       <button class='tab3-submit-booking-btn'>Add Booking</button>
       <button class='tab3-cancel-submission-btn'>Cancel</button>
     </form>
     `)
+  },
+
+  cleanNewBookingInputs() {
+    $('#tab3-new-booking-CusId').val('');
+    $('#tab3-new-booking-date').val('');
+    $('#tab3-new-booking-roomNum').val('');
+  },
+
+  hideNewBookingForm() {
+    $('.tab3-new-booking-form').html('');
   },
 
   displayRoomServiceRevenueByDate(roomServicesRepo, date) {
@@ -124,6 +150,11 @@ export default {
       }))
     }
   },
+
+  hideCustomerList() {
+    $('.tab4-customer').fadeOut();
+    $('#tab4-customer-search').val('');
+  },
   
   displayNoCustomersFound() {
     $('.tab4-customer-output').html(`<p>No users found</p>`) 
@@ -139,6 +170,7 @@ export default {
 
   hideFocusedUserName() {
     $('.main-customer-name-output').html('');
+    this.hideAddNewBookingBtn();
   },
 
   displayNewCustomerForm() {
@@ -146,15 +178,21 @@ export default {
     <form class='tab4-new-customer-input-form'>
       <input type='text' class='tab4-customer-input' placeholder='Enter Customer Name' />
       <button id='tab4-new-customer-submit' class='tab4-customer-input'>Submit New Customer</button>
+      <button id='tab4-cancel-customer-submit' class='tab4-customer-input'>Cancel</button>
     </form>
     `)
   },
 
+  hideNewCustomerForm() {
+    $('.tab4-new-customer-form').html('');
+  },
+
   displayNewCustomerName(target, newCustomerName) {
-    if (target.id === 'tab4-new-customer-submit') {
+    if ((target.id === 'tab4-new-customer-submit') && (newCustomerName.length > 2)) {
       $('#tab4-new-customer-submit').hide();
       $('.tab4-customer-input').hide();
-      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut()
+      $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut();
+      this.displayAddNewBookingBtn();
     }
   }
 } 
