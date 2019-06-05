@@ -1,5 +1,8 @@
 import chai from 'chai';
 const expect = chai.expect;
+import spies from 'chai-spies'
+chai.use(spies);
+import domUpdates from '../src/domUpdates.js'
 import RoomRepo from '../src/RoomRepo.js';
 import testRoom from '../testData/testRoom.js';
 import testBookings from '../testData/testBookings.js';
@@ -9,6 +12,11 @@ describe('RoomRepo', function () {
   let roomRepo;
   beforeEach(function () {
     roomRepo = new RoomRepo(testRoom.rooms, testBookings.bookings)
+    chai.spy.on(domUpdates, 'displayAvailableRooms', () => true);
+    chai.spy.on(domUpdates, 'displayNoRoomsFound', () => true);
+  });
+  afterEach(function() {
+    chai.spy.restore(domUpdates);
   });
   it('should be an instance of room repo', function () {
     expect(roomRepo).to.be.an.instanceOf(RoomRepo);
@@ -43,6 +51,15 @@ describe('RoomRepo', function () {
         costPerNight: 319.08
       }
     ])
-  })
+  });
+  it('should get rooms by type', function () {
+    expect(roomRepo.getRoomsByType('residential suite').length).to.equal(46)
+  });
+  it('should get total revenue for a given date', function () {
+    expect(roomRepo.getTotalRoomRevenueByDate('05/06/2019')).to.equal(624.6899999999999)
+  });
+  it.skip('should filter rooms by input', function () {
+    expect(roomRepo.filterRoomsByInput('residential suite').length).to.equal(20)
+  });
 });
 

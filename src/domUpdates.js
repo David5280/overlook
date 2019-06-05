@@ -138,7 +138,7 @@ export default {
     let leastPopularDate = bookingsRepo.getMostAvailableBookingDate();  
     $('.tab3-default-displays').text('');
     $('.tab3-default-displays').append(`<p class='tab3-popular-date'>Most Popular Booking Date:  <span class='info-bold'>${mostPopularDate}</span> with <span class='info-bold'>${bookingsRepo.getRoomNumbersBookedByDate(mostPopularDate).length}</span> bookings.<br />
-    Most Available Booking Date:  <span class='info-bold'>${leastPopularDate}</span> with <span class='info-bold'>${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(leastPopularDate).length}</span> rooms available.
+    Most Available Booking Date:  <span class='info-bold'>${leastPopularDate}</span> with <span class='info-bold'>${bookingsRepo.bookingsRepoData.length - bookingsRepo.getNumberOfAvailableRooms(leastPopularDate).length + 1 }</span> rooms available.
     </p>`)
   },
 
@@ -160,9 +160,9 @@ export default {
     $('.tab4-customer-output').html(`<p>No users found</p>`) 
   },
 
-  displayFocusedUserName(name) {
+  displayFocusedUserName(name, id) {
     $('.main-customer-name-output').html(`
-    <h2 class='main-display-customer-name'>Now Viewing: ${name}
+    <h2 class='main-display-customer-name'>Now Viewing: ${name} || ID: ${id}
     <button class='main-hide-customer-name'>Exit</Button>
     </h2>
     `)

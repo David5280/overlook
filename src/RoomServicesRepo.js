@@ -1,6 +1,3 @@
-import Order from './Order';
-import domUpdates from './domUpdates';
-
 class RoomServicesRepo {
   constructor(roomServicesRepoData) {
     this.roomServicesRepoData = roomServicesRepoData;

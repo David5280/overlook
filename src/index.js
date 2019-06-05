@@ -152,7 +152,7 @@ $(document).ready(function() {
       domUpdates.displayUserBookings(userBookings);
       domUpdates.displayOrders(userOrders);
       domUpdates.displayTotalOrderRevenue(userOrders)
-      domUpdates.displayFocusedUserName(userName.name);
+      domUpdates.displayFocusedUserName(userName.name, userName.id);
       domUpdates.displayAddNewBookingBtn();
       domUpdates.hideCustomerList();
     });

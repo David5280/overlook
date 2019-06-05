@@ -405,5 +405,5 @@ const testUsers =
   ]
 }
 
-export default 'testUsers';
+export default testUsers;
 

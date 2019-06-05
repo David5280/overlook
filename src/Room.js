@@ -7,15 +7,6 @@ class Room {
     this.numBeds = numBeds;
     this.costPerNight = costPerNight;
   }
-  upgradeRoom() {
-
-  }
-  filterRoomByType() {
-
-  }
-  checkRoomAvailabilityByDate() {
-
-  }
 }
 
 export default Room;
