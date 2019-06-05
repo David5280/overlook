@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import RoomServicesRepo from './RoomServicesRepo';
-import BookingsRepo from './BookingsRepo'
 
 export default {
 
@@ -21,7 +19,6 @@ export default {
   displayOrders(orders) {
     $('.tab2-no-orders-notice').html('');
     $('.tab2-revenue-display').html('');
-
     if (orders.length > 0) {
       orders.forEach(order => {
         $('.tab2-days-orders').append(`
@@ -30,7 +27,8 @@ export default {
         Date of Purchase: <span class='info-bold'>${order.date}</span><br />
         Purchase: <span class='info-bold'>${order.food}</span><br />
         Total Cost: <span class='info-bold'>$${order.totalCost}</span>
-        </p>`)
+        </p>
+        `)
       })
     }   else {
       $('.tab2-days-orders').append(`<p class='tab2-no-orders-notice'>No Orders To Display</p>`);
@@ -42,16 +40,18 @@ export default {
       acc += order.totalCost;
       return acc;
     }, 0).toFixed(2);
-    $('.tab2-days-orders').append(`Total Revenue:  <span class='info-bold'>$${revenue}</span>`)
+    $('.tab2-days-orders').append(`
+    Total Revenue:  <span class='info-bold'>$${revenue}</span>
+    `)
   },
 
   hideOrders(roomServicesRepo, today) {
     $('.tab2-days-orders').html('');
-    $('.tab2-days-orders').append(`<p class='tab2-no-orders-notice'>No Orders To Display for Today</p><br />
-    <p class='tab2-revenue-display'>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(today)} <br />
+    $('.tab2-days-orders').append(`
+    <p class='tab2-no-orders-notice'>No Orders To Display for Today</p><br />
+    <p class='tab2-revenue-display'>Todays Room Service Revenue:  $${roomServicesRepo.getRoomServiceRevenueByDate(today)}
     </p>
     `);
-    
   },
 
   displayAvailableRooms(availableRooms) {

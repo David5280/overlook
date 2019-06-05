@@ -18,7 +18,6 @@ class CustomerRepo {
 
   addCustomer(customerName) {
     let customer = new Customer(this.customerData.length + 1, customerName);
-    console.log('a', customer);
     this.customerData.push(customer);
   }
 

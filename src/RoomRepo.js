@@ -1,13 +1,9 @@
-import testBookings from '../testData/testBookings.js' 
-import testRoom from '../testData/testRoom.js'
-import BookingsRepo from './BookingsRepo.js'
 import domUpdates from './domUpdates.js';
 
 class RoomRepo {
   constructor(roomRepoData, bookingsRepoData) {
     this.roomRepoData = roomRepoData;
     this.bookingsRepoData = bookingsRepoData;
-    // this.totalCapacity = this.roomRepoData.length;
   }
 
   getNumberOfFreeRooms(date) {
@@ -26,6 +22,7 @@ class RoomRepo {
     }, 0)
     return totalRoomRevenue;
   }
+  
   getRoomsByRoomNumbers(roomNumbers) {
     let rooms = this.roomRepoData.filter(room => {
       return roomNumbers.includes(room.number);
