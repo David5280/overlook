@@ -30,5 +30,8 @@ describe('RoomServices', function () {
       }
     ]
     );
+  });
+  it('should get orders by customer ID', function () {
+    expect(roomServicesRepo.getOrdersById(2).length).to.equal(2)
   })
 });
