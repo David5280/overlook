@@ -135,7 +135,7 @@ $(document).ready(function() {
       let newCustomerName = $('.tab4-customer-input').val();
       if ((e.target.id === 'tab4-new-customer-submit') && (newCustomerName.length > 2)) {
         domUpdates.displayNewCustomerName(e.target, newCustomerName)
-        domUpdates.displayFocusedUserName(newCustomerName);
+        domUpdates.displayFocusedUserName(newCustomerName, customerRepo.customerData.length + 1);
         customerRepo.addCustomer(newCustomerName);
       } 
       if ((e.target.id === 'tab4-cancel-customer-submit')) {

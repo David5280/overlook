@@ -194,5 +194,16 @@ export default {
       $('.tab4-new-customer-input-form').append(`New Customer Added:  <span class='info-bold'>${newCustomerName}</span>`).delay(2500).fadeOut();
       this.displayAddNewBookingBtn();
     }
-  }
+  }, 
+
+  displayNewBookingConfirmation(newBookingCustomerId, newBookingDate, newBookingRoomNumber) {
+    $('.tab3-new-booking-form').html(`
+    <p class='tab3-booking-confirmation'>
+      New booking confirmed!<br />
+      Customer:  <span class='info-bold'>${newBookingCustomerId}</span><br />
+      Date:  <span class='info-bold'>${newBookingDate}</span><br />
+      Room:  <span class='info-bold'>${newBookingRoomNumber}</span>
+    </p>
+    `).delay(2500).fadeOut();
+  },
 } 
