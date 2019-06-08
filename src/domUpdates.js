@@ -107,6 +107,7 @@ export default {
   },
 
   displayNewBookingForm() {
+    $('.tab3-new-booking-form').html('');
     $('.tab3-room-displays').append(`
     <form class='tab3-new-booking-form'>
       <input id='tab3-new-booking-date' class='tab3-new-booking-input' placeholder='Date: dd/mm/yyyy' />
