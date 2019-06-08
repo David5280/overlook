@@ -1,16 +1,16 @@
 .tab1-date {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
   border-bottom: 2px solid $accentBlue;
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  width: 100%;
 }
 
 .tab1-primary-info {
-  width: 100%;
-  height: 30%;
-  display: flex;
   border-bottom: 2px solid $accentBlue;
+  display: flex;
+  height: 30%;
+  width: 100%;
 }
 
 .tab1-primary-info-text {

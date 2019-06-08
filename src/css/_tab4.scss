@@ -3,8 +3,8 @@
 }
 
 #tab4-customer-search {
-  width: 30%;
   cursor: pointer;
+  width: 30%;
 }
 
 .tab4-output-container {
@@ -13,9 +13,9 @@
 }
 
 .tab4-new-customer-form {
-  width: 50%;
-  height: 100%;
   display: flex;
+  height: 100%;
+  width: 50%;
 }
 
 #tab4-add-new-customer-btn {
@@ -23,27 +23,27 @@
 }
 
 .tab4-new-customer-input-form {
-  width: 75%;
-  margin: auto;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: auto;
+  width: 75%;
 }
 
 .tab4-customer:hover {
-  cursor: pointer;
   background-color: $backgroundColor;
+  cursor: pointer;
 }
 
 .tab4-customer-input {
+  height: 25px;
   margin: auto;
   width: 80%;
-  height: 25px;
 }
 
 .tab4-customer-output {
+  border-right: 1px solid $accentBlue;
   height: 450px;
   overflow: auto;
   width: 50%;
-  border-right: 1px solid $accentBlue;
 }

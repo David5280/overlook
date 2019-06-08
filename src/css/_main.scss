@@ -3,9 +3,9 @@ main {
 }
 
 .container{
-  width: 95%;
   height: 95%;
   margin: 0 auto;
+  width: 95%;
 }
 
 h3 {
@@ -13,11 +13,11 @@ h3 {
 }
 
 .main-display-customer-name {
-  margin-left: auto;
+  bottom: 10px;
   display: flex;
   align-items: center;
+  margin-left: auto;
   position: absolute;
-  bottom: 10px;
   & .main-hide-customer-name {
     height: 35px;
     margin: 0px 10px;
@@ -29,17 +29,17 @@ h3 {
 }
 
 ul.tabs{
+  list-style: none;
   margin: 0px;
   padding: 0px;
-  list-style: none;
 }
 
 ul.tabs li{
   background: none;
   color: $textColor;
+  cursor: pointer;
   display: inline-block;
   padding: 10px 15px;
-  cursor: pointer;
 }
 
 ul.tabs li.current{
@@ -54,10 +54,10 @@ ul.tabs li.current{
 
 .tab-content,
 .tab-content-3 {
-display: none;
 background: $secondaryColor;
-padding: 15px;
+display: none;
 height: 500px;
+padding: 15px;
 }
 
 .tab-content.current{
