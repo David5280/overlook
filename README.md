@@ -1,8 +1,8 @@
-# Overwatch
+# Overlook
 
-Overwatch is my final solo project in module two at the Turing School of Software and Design.  It is a hotel management application designed to keep track of bookings, room service orders, past and present patrons, and rooms.  This application works with four seperate datasets retrieved from a third party using fetch, and uses classes, array prototype methods, jquery, SCSS, and good old plain JavaScript.
+Overlook is my final solo project in module two at the Turing School of Software and Design.  It is a hotel management application designed to keep track of bookings, room service orders, past and present patrons, and rooms.  This application works with four seperate datasets retrieved from a third party using fetch, and uses classes, array prototype methods, jquery, SCSS, and good old plain JavaScript.
 
-One week was allowed for the completion of **Overwatch**.
+One week was allowed for the completion of **Overlook**.
 
 ## Installation
 
@@ -25,17 +25,17 @@ One week was allowed for the completion of **Overwatch**.
  
  Main tab:
  
- ![Overwatch main tab](https://github.com/David5280/overlook/blob/master/src/images/Main.png)
+ ![Overlook main tab](https://github.com/David5280/overlook/blob/master/src/images/Main.png)
 
  Orders tab:
  
- ![Overwatch orders tab](https://github.com/David5280/overlook/blob/master/src/images/Orders.png)
+ ![Overlook orders tab](https://github.com/David5280/overlook/blob/master/src/images/Orders.png)
 
  Rooms/Booking tab:
  
- ![Overwatch room/bookings tab](https://github.com/David5280/overlook/blob/master/src/images/Rooms:booking.png)
+ ![Overlook room/bookings tab](https://github.com/David5280/overlook/blob/master/src/images/Rooms:booking.png)
 
  Customers tab:
  
- ![Overwatch customers tab](https://github.com/David5280/overlook/blob/master/src/images/Customers.png)
+ ![Overlook customers tab](https://github.com/David5280/overlook/blob/master/src/images/Customers.png)
 
